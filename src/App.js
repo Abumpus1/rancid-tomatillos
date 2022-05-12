@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import movieData from "./movieData";
+import TopSection from "./components/TopSection";
+import MovieCardContainer from "./components/MovieCardContainer";
+import SingleMovie from "./components/SingleMovie";
 import "./App.css";
+
 console.log(movieData.movies)
 class App extends Component {
   constructor() {
     super();
     this.state = {
       movies: [],
-      movie: {}
+      movie: []
     };
   }
 
@@ -23,7 +27,7 @@ class App extends Component {
     return (
       <main className="App">
         <TopSection />
-        {!this.state.movie ? <MovieCardContainer /> : <SingleMovie />}
+        {!this.state.movie.length ? <MovieCardContainer /> : <SingleMovie />}
       </main>
 
     )
