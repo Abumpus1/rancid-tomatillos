@@ -1,9 +1,15 @@
 import React from "react";
-import "./MovieCardContainer.css"
+import MovieCard from "./MovieCard";
+import "./MovieCardContainer.css";
 
 function MovieCardContainer() {
   return (
-    <h2>MovieCard Container</h2>
+    <div>
+      <h2>MovieCard Container</h2>
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+    </div>
   )
 }
 
