@@ -6,7 +6,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      movies: []
+      movies: [],
+      movie: {}
     };
   }
 
@@ -16,9 +17,14 @@ class App extends Component {
     })
   }
 
+
+
   render() {
     return (
-        <h1 className="App">Test</h1>
+      <main className="App">
+        <TopSection />
+        {!this.state.movie ? <MovieCardContainer /> : <SingleMovie />}
+      </main>
 
     )
   }
