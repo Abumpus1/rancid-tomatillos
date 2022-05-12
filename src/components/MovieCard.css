@@ -71,7 +71,9 @@
 }
 
 .card-date {
+  font-size: 20px;
   position: absolute;
+  padding: 10px;
   top: 0;
   left: 0;
   color: white;
