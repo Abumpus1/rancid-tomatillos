@@ -1,9 +1,11 @@
 import React from "react";
 import "./MovieCard.css";
 
-function MovieCard() {
+function MovieCard({key, id, poster, backdrop, title, rating, date}) {
   return (
-    <h3>Movie Card</h3>
+    <div className="movie-card">
+      <h4>Test</h4>
+    </div>
   )
 }
 
