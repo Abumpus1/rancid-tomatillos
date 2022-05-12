@@ -9,7 +9,10 @@ function MovieCard({id, poster, backdrop, title, rating, date}) {
       </div>
       <img className="poster-image" src={poster}/>
       <div className="movie-card-hover">
-        <img className="backdrop-image" src={backdrop} />
+        <div className="hover-shadow"></div>
+        <div className="backdrop-box">
+          <img className="backdrop-image" src={backdrop} />
+        </div>
         <p className="card-date">{date}</p>
         <p className="card-title">{title}</p>
       </div>

@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 .poster-image {
-  z-index: 2;
+  z-index: 3;
   position: absolute;
   top: 0;
   left: 0;
@@ -16,9 +16,40 @@
   bottom: 0;
 }
 
-/* .backdrop-image {
-  position: relative;
-} */
+.movie-card-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hover-shadow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 33%, rgba(0,0,0,0.4009978991596639) 100%);
+}
+
+.backdrop-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.backdrop-image {
+  height: 100%;
+  width: auto;
+}
 
 .rating-box {
   display: flex;
@@ -30,7 +61,7 @@
   background: red;
   top: 0;
   right: 0;
-  z-index: 3;
+  z-index: 4;
   box-shadow: 2px 2px 15px;
 }
 
@@ -39,21 +70,12 @@
   font-size: 20px;
 }
 
-.movie-card-hover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: blue;
-  width: 30px;
-  height: 100px;
-}
-
 .card-date {
   position: absolute;
   top: 0;
   left: 0;
+  color: white;
+  z-index: 2;
 }
 
 .card-title {
@@ -62,8 +84,10 @@
   top: 50px;
   color: white;
   text-shadow: 2px 2px 2px black;
+  z-index: 2;
 }
 
 .poster-image:hover {
   opacity: 0;
+  transition: .3s ease-out;
 }
