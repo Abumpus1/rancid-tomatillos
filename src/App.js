@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <main className="App">
         <TopSection />
-        {!this.state.movie.length ? <MovieCardContainer /> : <SingleMovie />}
+        {!this.state.movie.length ? <MovieCardContainer movies={this.state.movies}/> : <SingleMovie />}
       </main>
 
     )
