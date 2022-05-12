@@ -1,4 +1,35 @@
-.poster-image {
+.movie-card, .poster-image {
   height: 500px;
-  width: auto;
+  width: 333px;
+}
+
+.movie-card {
+  position: relative;
+  overflow: hidden;
+}
+.poster-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.rating-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 50px;
+  position: absolute;
+  background: red;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  box-shadow: 2px 2px 15px;
+}
+
+.rating-box > p {
+  color: white;
+  font-size: 20px;
 }

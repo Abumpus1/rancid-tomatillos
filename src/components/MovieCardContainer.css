@@ -1,4 +1,6 @@
 .movie-card-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px 20px;
+  background: black;
 }
