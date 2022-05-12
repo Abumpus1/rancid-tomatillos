@@ -17,8 +17,7 @@ function MovieCardContainer({ movies }) {
     )
   })
   return (
-    <div>
-      <h2>MovieCard Container</h2>
+    <div className="movie-card-container">
       {movieCards}
     </div>
   )

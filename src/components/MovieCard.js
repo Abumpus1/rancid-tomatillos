@@ -4,7 +4,8 @@ import "./MovieCard.css";
 function MovieCard({key, id, poster, backdrop, title, rating, date}) {
   return (
     <div className="movie-card">
-      <h4>Test</h4>
+      <img className="poster-image" src={poster}/>
+
     </div>
   )
 }
