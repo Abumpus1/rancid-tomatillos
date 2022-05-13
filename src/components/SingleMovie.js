@@ -16,7 +16,6 @@ function SingleMovie({movie}) {
 
   return (
     <div className="single-movie">
-      <h2>SingleMovie</h2>
       {singleCard}
       <MovieDetailContainer movie={movie}/>
     </div>
