@@ -24,11 +24,8 @@ class App extends Component {
   }
 
   selectMovie = (id) => {
-    // console.log(id)
     Promise.all([apiCalls.getMovies(id)])
     .then(data => this.setState({movie: [data[0].movie]}))
-    // this.setState({movie: data[0].movie}
-    // const select = this.state.movies.find(movie => movie.id === id)
   }
 
 

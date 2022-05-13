@@ -21,8 +21,8 @@ function MovieDetailContainer({movie}) {
         {genresToDisplay}
       </div>
       <div>
-        <h4>Budget: ${budget.toLocaleString("en-US")}</h4>
-        <h4>Revenue: ${revenue.toLocaleString("en-US")}</h4>
+        {budget !== 0 && <h4>Budget: ${budget.toLocaleString("en-US")}</h4>}
+        {revenue !==0 && <h4>Revenue: ${revenue.toLocaleString("en-US")}</h4>}
       </div>
     </div>
   )
