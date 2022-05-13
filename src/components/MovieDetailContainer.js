@@ -4,7 +4,7 @@ import "./MovieDetailContainer.css";
 function MovieDetailContainer({movie}) {
   const {title,tagline,budget,revenue,overview,runtime,genres} = movie
 
-  const genresToDisplay = genres.map(genre=> <p>{genre} </p>)
+  const genresToDisplay = genres.map((genre,index)=> <p key={index}>{genre} </p>)
 
 
   return (
