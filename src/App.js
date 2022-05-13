@@ -10,13 +10,15 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
-      movie: []
+      movie: [],
+      error:""
     };
   }
 
   componentDidMount() {
     Promise.all([apiCalls.getMovies()])
-    .then(data => this.setState({movies: data[0].movies}) )
+    .then(data => this.setState({movies: data[0].movies,error:""}))
+    .catch(error => this.setState({error:error.message}))
   }
 
   goHome = () => {
@@ -25,7 +27,8 @@ class App extends Component {
 
   selectMovie = (id) => {
     Promise.all([apiCalls.getMovies(id)])
-    .then(data => this.setState({movie: [data[0].movie]}))
+    .then(data => this.setState({movie: [data[0].movie],error:""}))
+    .catch(error => this.setState({error:error.message}))
   }
 
 
@@ -33,6 +36,7 @@ class App extends Component {
     return (
       <main className="App">
         <TopSection goHome={this.goHome} length={this.state.movie.length}/>
+        {this.state.error && <h2>An error has occured, please try your request again later.</h2>}
         {!this.state.movie.length ? <MovieCardContainer selectMovie={this.selectMovie} movies={this.state.movies}/> : <SingleMovie movie={this.state.movie[0]}/>}
       </main>
 

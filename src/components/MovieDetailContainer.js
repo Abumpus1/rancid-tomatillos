@@ -15,7 +15,7 @@ function MovieDetailContainer({movie}) {
         <h4>Overview:</h4>
         <p>{overview}</p>
       </div>
-      <h4>Runtime:{runtime} minutes</h4>
+      <h4>Runtime: {runtime} minutes</h4>
       <div>
         <h4>Genres:</h4>
         {genresToDisplay}
