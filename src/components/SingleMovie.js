@@ -8,19 +8,17 @@ function SingleMovie({movie}) {
     const singleCard = (<MovieCard
         key={movie.id}
         id={movie.id}
-        poster={movie.poster_path}
         backdrop={movie.backdrop_path}
         title={movie.title}
         rating={movie.average_rating}
         date={movie.release_date}
       />)
 
-
   return (
-    <div>
+    <div className="single-movie">
       <h2>SingleMovie</h2>
       {singleCard}
-      // <MovieDetailContainer />
+      <MovieDetailContainer movie={movie}/>
     </div>
   )
 }

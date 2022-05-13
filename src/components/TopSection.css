@@ -23,3 +23,14 @@ nav {
   height: 50px;
   width: 50px;
 }
+
+button {
+  background: red;
+  border-radius: 5px;
+  font-size:20px;
+  font-weight:bold;
+  border:0;
+  height: 40px;
+  width: 100px;
+
+}

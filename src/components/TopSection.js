@@ -10,7 +10,7 @@ function TopSection({goHome,length}) {
         <img className="rancid-logo" src={image} alt="Rancid Tomatillos"/>
       </header>
       <nav>
-        {length !==0 && <button onClick={() =>{goHome()}}>Home</button>}
+        {length !==0 && <button onClick={() =>{goHome()}}>HOME</button>}
       </nav>
     </div>
   )
