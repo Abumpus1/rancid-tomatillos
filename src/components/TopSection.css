@@ -1,0 +1,36 @@
+.top-section {
+  display:flex;
+  height:10vh;
+  background-color: black;
+  position:sticky;
+  top:0;
+  z-index:5;
+}
+
+header,nav {
+  display:flex;
+  align-items: center;
+  width:50%;
+  color:white;
+  padding:15px;
+}
+
+nav {
+  justify-content:flex-end;
+}
+
+.rancid-logo {
+  height: 50px;
+  width: 50px;
+}
+
+button {
+  background: red;
+  border-radius: 5px;
+  font-size:20px;
+  font-weight:bold;
+  border:0;
+  height: 40px;
+  width: 100px;
+
+}

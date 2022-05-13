@@ -1,9 +1,18 @@
 import React from "react";
 import "./TopSection.css";
+import image from "./logo.svg"
 
-function TopSection() {
+function TopSection({goHome,length}) {
   return (
-    <h2>Top Section</h2>
+    <div className="top-section">
+      <header>
+        <h1>Rancid Tomatillos</h1>
+        <img className="rancid-logo" src={image} alt="Rancid Tomatillos"/>
+      </header>
+      <nav>
+        {length !==0 && <button onClick={() =>{goHome()}}>HOME</button>}
+      </nav>
+    </div>
   )
 }
 

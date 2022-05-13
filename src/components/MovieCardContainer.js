@@ -2,12 +2,13 @@ import React from "react";
 import MovieCard from "./MovieCard";
 import "./MovieCardContainer.css";
 
-function MovieCardContainer({ movies }) {
+function MovieCardContainer({ movies, selectMovie }) {
   const movieCards = movies.map(movie => {
     return (
-      <MovieCard 
+      <MovieCard
+        selectMovie={selectMovie}
         key={movie.id}
-        id={movie.id} 
+        id={movie.id}
         poster={movie.poster_path}
         backdrop={movie.backdrop_path}
         title={movie.title}

@@ -1,0 +1,12 @@
+.movie-detail-container {
+  display:flex;
+  flex-direction:column;
+  width:50%;
+  align-items:flex-start;
+  justify-content:space-around;
+  padding-left:50px;
+}
+
+.movie-detail-container > div {
+  text-align:left;
+}

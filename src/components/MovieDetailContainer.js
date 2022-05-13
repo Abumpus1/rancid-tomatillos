@@ -1,14 +1,29 @@
 import React from "react";
-import MovieDetail from "./MovieDetail";
 import "./MovieDetailContainer.css";
 
-function MovieDetailContainer() {
+function MovieDetailContainer({movie}) {
+  const {title,tagline,budget,revenue,overview,runtime,genres} = movie
+
+  const genresToDisplay = genres.map(genre=> <p>{genre} </p>)
+
+
   return (
-    <div>
-      <MovieDetail />
-      <MovieDetail />
-      <MovieDetail />
-      <MovieDetail />
+    <div className="movie-detail-container">
+      <h3>{title}</h3>
+      <h4>{tagline}</h4>
+      <div>
+        <h4>Overview:</h4>
+        <p>{overview}</p>
+      </div>
+      <h4>Runtime:{runtime} minutes</h4>
+      <div>
+        <h4>Genres:</h4>
+        {genresToDisplay}
+      </div>
+      <div>
+        <h4>Budget: ${budget.toLocaleString("en-US")}</h4>
+        <h4>Revenue: ${revenue.toLocaleString("en-US")}</h4>
+      </div>
     </div>
   )
 }
