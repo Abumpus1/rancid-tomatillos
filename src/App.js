@@ -20,10 +20,12 @@ class App extends Component {
     })
   }
 
+  goHome = () => {
+    this.setState({movie:[]})
+  }
+
   selectMovie = (id) => {
-    console.log(id)
     const select = this.state.movies.find(movie => movie.id === id)
-    console.log(select)
     this.setState({movie:[select]})
   }
 
@@ -31,7 +33,7 @@ class App extends Component {
   render() {
     return (
       <main className="App">
-        <TopSection />
+        <TopSection goHome={this.goHome} length={this.state.movie.length}/>
         {!this.state.movie.length ? <MovieCardContainer selectMovie={this.selectMovie} movies={this.state.movies}/> : <SingleMovie movie={this.state.movie[0]}/>}
       </main>
 

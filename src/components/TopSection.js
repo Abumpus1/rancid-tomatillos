@@ -2,7 +2,7 @@ import React from "react";
 import "./TopSection.css";
 import image from "./logo.svg"
 
-function TopSection() {
+function TopSection({goHome,length}) {
   return (
     <div className="top-section">
       <header>
@@ -10,7 +10,7 @@ function TopSection() {
         <img className="rancid-logo" src={image} alt="Rancid Tomatillos"/>
       </header>
       <nav>
-        <button>Home</button>
+        {length !==0 && <button onClick={() =>{goHome()}}>Home</button>}
       </nav>
     </div>
   )
