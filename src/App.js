@@ -20,13 +20,19 @@ class App extends Component {
     })
   }
 
+  selectMovie = (id) => {
+    console.log(id)
+    const select = this.state.movies.find(movie => movie.id === id)
+    console.log(select)
+    this.setState({movie:[select]})
+  }
 
 
   render() {
     return (
       <main className="App">
         <TopSection />
-        {!this.state.movie.length ? <MovieCardContainer movies={this.state.movies}/> : <SingleMovie />}
+        {!this.state.movie.length ? <MovieCardContainer selectMovie={this.selectMovie} movies={this.state.movies}/> : <SingleMovie movie={this.state.movie[0]}/>}
       </main>
 
     )
