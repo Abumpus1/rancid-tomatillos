@@ -62,6 +62,7 @@
   right: 0;
   z-index: 4;
   box-shadow: 2px 2px 15px;
+  border-radius: 0px 0px 8px 8px;
 }
 
 .rating-box > p {
