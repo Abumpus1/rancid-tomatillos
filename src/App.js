@@ -5,7 +5,6 @@ import MovieCardContainer from "./components/MovieCardContainer";
 import SingleMovie from "./components/SingleMovie";
 import "./App.css";
 
-console.log(movieData.movies)
 class App extends Component {
   constructor() {
     super();
