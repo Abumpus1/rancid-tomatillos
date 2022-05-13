@@ -3,6 +3,7 @@ import movieData from "./movieData";
 import TopSection from "./components/TopSection";
 import MovieCardContainer from "./components/MovieCardContainer";
 import SingleMovie from "./components/SingleMovie";
+import apiCalls from "./apiCalls"
 import "./App.css";
 
 class App extends Component {
@@ -15,9 +16,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      movies: movieData.movies
-    })
+    Promise.all([apiCalls.getMovies()])
+    .then(data => this.setState({movies: data[0].movies}) )
   }
 
   goHome = () => {
