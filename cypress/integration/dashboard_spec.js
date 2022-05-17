@@ -4,8 +4,6 @@ describe("Dashboard spec testing", () => {
 
   beforeEach(() => {
     cy.visit("http://localhost:3000/")
-
-    
   });
 
   it("Should display 5 movies", () => {
@@ -16,6 +14,15 @@ describe("Dashboard spec testing", () => {
 
     cy.get(".movie-card")
       .should("have.length", 5)
+  });
+  
+  it("Should display correct movie card details", () => {
+    cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/", {
+      statusCode: 201,
+      body: movieData
+    })
+
+    cy.get(".movie-card")
       .first()
         .contains("67%")
 
