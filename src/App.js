@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import TopSection from "./components/TopSection";
 import MovieCardContainer from "./components/MovieCardContainer";
 import SingleMovie from "./components/SingleMovie";
-import apiCalls from "./apiCalls"
+import { Route, NavLink } from "react-router-dom";
+import apiCalls from "./apiCalls";
 import "./App.css";
 
 class App extends Component {
@@ -35,13 +36,20 @@ class App extends Component {
   render() {
     return (
       <main className="App">
-        <TopSection goHome={this.goHome} length={this.state.movie.length}/>
-        {this.state.error && <h2>An error has occured, please try your request again later.</h2>}
-        {!this.state.movie.length ? <MovieCardContainer selectMovie={this.selectMovie} movies={this.state.movies}/> : <SingleMovie movie={this.state.movie[0]}/>}
+      <TopSection goHome={this.goHome} length={this.state.movie.length}/>
+        <Route exact path="/" render={() => {
+           return <MovieCardContainer selectMovie={this.selectMovie} movies={this.state.movies}/>
+        }}
+        />
+        
       </main>
 
     )
   }
 }
 
+ /* <TopSection goHome={this.goHome} length={this.state.movie.length}/>
+{this.state.error && <h2>An error has occured, please try your request again later.</h2>}
+{!this.state.movie.length ? <MovieCardContainer selectMovie={this.selectMovie} movies={this.state.movies}/> : <SingleMovie movie={this.state.movie[0]}/>}
+*/
 export default App;
