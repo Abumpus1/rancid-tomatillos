@@ -18,7 +18,3 @@ function TopSection() {
 }
 
 export default TopSection;
-
-/*
-{length !==0 && <button onClick={() =>{goHome()}}>HOME</button>}
-*/

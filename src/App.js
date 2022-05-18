@@ -22,10 +22,6 @@ class App extends Component {
       .catch(error => this.setState({error:error.message}))
   }
 
-  // goHome = () => {
-  //   this.setState({movie: {}})
-  // }
-
   selectMovie = (id) => {
     apiCalls.getMovies(id)
       .then(data => {
