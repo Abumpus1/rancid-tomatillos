@@ -1,7 +1,7 @@
 import React from "react";
 import "./MovieCard.css";
 
-function MovieCard({id, poster, backdrop, title, rating, date,selectMovie = null}) {
+function MovieCard({id, poster, backdrop, title, rating, date, selectMovie = null}) {
   const year = new Date(date).getFullYear();
   const fixedRating = `${rating.toFixed(1)*10}%`;
 

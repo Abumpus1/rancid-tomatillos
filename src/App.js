@@ -6,53 +6,47 @@ import { Route, NavLink } from "react-router-dom";
 import apiCalls from "./apiCalls";
 import "./App.css";
 
-let pickedMovie
-
 class App extends Component {
   constructor() {
     super();
     this.state = {
       movies: [],
-      movie: [],
+      movie: {},
       error:""
     };
   }
 
   componentDidMount() {
-    Promise.all([apiCalls.getMovies()])
-    .then(data => this.setState({movies: data[0].movies,error:""}))
-    .catch(error => this.setState({error:error.message}))
+    apiCalls.getMovies()
+      .then(data => this.setState({movies: data.movies,error:""}))
+      .catch(error => this.setState({error:error.message}))
   }
 
   goHome = () => {
-    this.setState({movie:[]})
+    this.setState({movie: {}})
   }
 
   selectMovie = (id) => {
-    Promise.all([apiCalls.getMovies(id)])
-    .then(data => {
-          if(this.state.movie[0].id === id){
-            console.log('pass')
-            this.setState({movie: [data[0].movie],error:""})
-          }
-          console.log('fail')
-         console.log(this.state.movie)
-
-    })
-    .catch(error => this.setState({error:error.message}))
+    apiCalls.getMovies(id)
+      .then(data => {
+        this.setState({movie: data.movie, error:""})
+        // console.log(this.state.movie)
+      })
+    .catch(error => this.setState({error: error.message}))
   }
 
 
   render() {
     return (
       <main className="App">
-      <TopSection goHome={this.goHome} length={this.state.movie.length}/>
+        <TopSection goHome={this.goHome} length={0}/>
         <Route exact path="/" render={() => {
            return <MovieCardContainer selectMovie={this.selectMovie} movies={this.state.movies}/>
         }}
         />
         <Route exact path="/:movie_id" render={ ({ match }) => {
-          console.log(match)
+          // console.log(match)
+          console.log("ROUTE in APP");
           return (<SingleMovie movieId={parseInt(match.params.movie_id)}/>)
         }}
         />
