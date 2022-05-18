@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./TopSection.css";
 import image from "./logo.svg"
 
