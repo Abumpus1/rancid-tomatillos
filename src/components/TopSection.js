@@ -3,7 +3,7 @@ import { Route, NavLink } from "react-router-dom";
 import "./TopSection.css";
 import image from "./logo.svg"
 
-function TopSection({goHome,length}) {
+function TopSection() {
   return (
     <div className="top-section">
       <header>

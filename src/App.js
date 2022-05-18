@@ -22,9 +22,9 @@ class App extends Component {
       .catch(error => this.setState({error:error.message}))
   }
 
-  goHome = () => {
-    this.setState({movie: {}})
-  }
+  // goHome = () => {
+  //   this.setState({movie: {}})
+  // }
 
   selectMovie = (id) => {
     apiCalls.getMovies(id)
@@ -38,7 +38,7 @@ class App extends Component {
   render() {
     return (
       <main className="App">
-        <TopSection goHome={this.goHome} length={0}/>
+        <TopSection />
         <Route exact path="/" render={() => {
            return <MovieCardContainer selectMovie={this.selectMovie} movies={this.state.movies}/>
         }}
