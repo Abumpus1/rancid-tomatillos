@@ -1,4 +1,5 @@
 import React from "react";
+import { Route, NavLink } from "react-router-dom";
 import "./TopSection.css";
 import image from "./logo.svg"
 
@@ -10,10 +11,14 @@ function TopSection({goHome,length}) {
         <img className="rancid-logo" src={image} alt="Rancid Tomatillos"/>
       </header>
       <nav>
-        {length !==0 && <button onClick={() =>{goHome()}}>HOME</button>}
+        <NavLink exact to="/" className="nav">HOME</NavLink>
       </nav>
     </div>
   )
 }
 
 export default TopSection;
+
+/*
+{length !==0 && <button onClick={() =>{goHome()}}>HOME</button>}
+*/

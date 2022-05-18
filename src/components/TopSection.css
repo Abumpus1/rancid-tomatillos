@@ -23,7 +23,7 @@ nav {
   width: 50px;
 }
 
-button {
+.nav {
   background: red;
   border-radius: 5px;
   font-size:20px;
@@ -31,5 +31,12 @@ button {
   border:0;
   height: 40px;
   width: 100px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-decoration: none;
+}
 
+.active {
+  visibility:hidden;
 }
