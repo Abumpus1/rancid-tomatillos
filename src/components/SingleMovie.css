@@ -2,4 +2,16 @@
   background-color: black;
   display:flex;
   padding:50px 0px 0px 150px;
+
+}
+
+.trailer-details {
+  display:flex;
+  flex-direction:column;
+  width:70%;
+  overflow-y:auto;
+}
+
+.card-display {
+  width:30%;
 }
