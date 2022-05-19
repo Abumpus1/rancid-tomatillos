@@ -1,7 +1,7 @@
 import React from "react";
 import "./MovieCard.css";
 
-function MovieCard({id, poster, backdrop, title, rating, date,selectMovie = null}) {
+function MovieCard({id, poster, backdrop, title, rating, date }) {
   const year = new Date(date).getFullYear();
   const fixedRating = `${rating.toFixed(1)*10}%`;
 
@@ -10,7 +10,7 @@ function MovieCard({id, poster, backdrop, title, rating, date,selectMovie = null
       <div className="rating-box">
         <p>{fixedRating}</p>
       </div>
-      {poster && <img onClick={() => {selectMovie(id)}} className="poster-image" src={poster}/>}
+      {poster && <img className="poster-image" src={poster}/>}
       <div className="movie-card-hover">
         <div className="hover-shadow"></div>
         <div className="backdrop-box">
