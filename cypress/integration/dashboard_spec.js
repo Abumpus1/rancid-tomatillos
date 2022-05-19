@@ -1,26 +1,21 @@
-import movieData from "../fixtures/movieData";
-
 describe("Dashboard spec testing", () => {
 
   beforeEach(() => {
+
+    cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/", { fixture: "movieData.json" })
+
     cy.visit("http://localhost:3000/")
+
+    cy.wait(1000)
+
   });
 
   it("Should display 5 movies", () => {
-    cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/", {
-      statusCode: 201,
-      body: movieData
-    })
-
     cy.get(".movie-card")
       .should("have.length", 5)
   });
   
   it("Should display correct movie card details", () => {
-    cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/", {
-      statusCode: 201,
-      body: movieData
-    })
 
     cy.get(".movie-card")
       .first()
@@ -46,20 +41,17 @@ describe("Dashboard spec testing", () => {
 
   it("Should display an error message on a 500 server error", () => {
     cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/", {
-      statusCode: 500,
-      body: {
-        message: "Error test"
-      }
+      statusCode: 500
     })
+
+    cy.visit("http://localhost:3000/")
+
+    cy.wait(1000)
 
     cy.get("h2").contains("An error has occured, please try your request again later.")
   });
 
   it("Should have a title and logo", () => {
-    cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/", {
-      statusCode: 201,
-      body: movieData
-    })
     
     cy.get("h1").should("have.text", "Rancid Tomatillos")
 
@@ -67,10 +59,6 @@ describe("Dashboard spec testing", () => {
   });
 
   it("Should not have a home button on dashboard", () => {
-    cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/", {
-      statusCode: 201,
-      body: movieData
-    })
 
     cy.get(".top-section button").should("not.exist")
   });
