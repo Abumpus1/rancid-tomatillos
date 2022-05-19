@@ -9,19 +9,18 @@ class SingleMovie extends Component {
     super()
     this.state = {
       id: movieId,
-      movie: {}
+      movie: {},
+      videos:[]
     }
   }
 
-
-
 componentDidMount() {
-  apiCalls.getMovies(this.state.id).then(data => this.setState({ movie: data.movie }))
+  Promise.all([apiCalls.getMovies(this.state.id),apiCalls.getMovies(`${this.state.id}/videos`)])
+  .then(data => this.setState({ movie: data[0].movie, videos: data[1].videos }))
 }
 
-
   render() {
-
+    const trailer = this.state.videos.find(video => video.type === "Trailer" && video.site === "YouTube")
     return (
        this.state.movie.id ? <div className="single-movie">
        <div className="card-display">
@@ -35,7 +34,7 @@ componentDidMount() {
         />
         </div>
         <div className="trailer-details">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/aETz_dRDEys" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          {trailer && <iframe width="560" height="315" src={`https://www.youtube.com/embed/${trailer.key}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> }
           <br/>
           <MovieDetailContainer movie={this.state.movie}/>
         </div>
