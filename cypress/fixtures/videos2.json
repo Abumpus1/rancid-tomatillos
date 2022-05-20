@@ -1,0 +1,32 @@
+{
+  "videos": [
+    {
+      "id": 303,
+      "movie_id": 581392,
+      "key": "aRuhOJJA56U",
+      "site": "YouTube",
+      "type": "Featurette"
+    },
+    {
+      "id": 302,
+      "movie_id": 581392,
+      "key": "cRvHl1dThlg",
+      "site": "YouTube",
+      "type": "Trailer"
+    },
+    {
+      "id": 304,
+      "movie_id": 581392,
+      "key": "XdruWAKcoxc",
+      "site": "YouTube",
+      "type": "Trailer"
+    },
+    {
+      "id": 301,
+      "movie_id": 581392,
+      "key": "yVucSRLLeIM",
+      "site": "YouTube",
+      "type": "Teaser"
+    }
+  ]
+}

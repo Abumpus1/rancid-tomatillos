@@ -25,6 +25,7 @@ class App extends Component {
     return (
       <main className="App">
         <TopSection />
+        {this.state.error && <h2>An error has occured, please try your request again later.</h2>}
         <Route exact path="/" render={() => {
            return <MovieCardContainer movies={this.state.movies}/>
         }}
