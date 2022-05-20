@@ -10,7 +10,7 @@ function MovieDetailContainer({movie}) {
   return (
     <div className="movie-detail-container">
       <h3 className="detail">{title}</h3>
-      <h4 className="detail">{tagline}</h4>
+      {tagline && <h4 className="tagline detail">{tagline}</h4>}
       <div>
         <h4 className="detail">Overview:</h4>
         <p className="detail">{overview}</p>
@@ -20,11 +20,8 @@ function MovieDetailContainer({movie}) {
         <h4 className="detail">Genres:</h4>
         {genresToDisplay}
       </div>
-      <div>
         {budget !== 0 && <h4 className="detail">Budget: ${budget.toLocaleString("en-US")}</h4>}
         {revenue !==0 && <h4 className="detail">Revenue: ${revenue.toLocaleString("en-US")}</h4>}
-      </div>
-
     </div>
   )
 }

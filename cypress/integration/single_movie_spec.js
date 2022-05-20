@@ -11,8 +11,6 @@ describe("Single movie spec testing", () => {
     
     cy.visit("http://localhost:3000")
 
-    cy.wait(1000)
-
   })
 
   it("Should take user to Single Movie page", () => {
@@ -22,13 +20,27 @@ describe("Single movie spec testing", () => {
     cy.get(".trailer-details").should("exist")
   })
 
+  it("Should update url based on page", () => {
+    cy.url().should('eq', 'http://localhost:3000/')
+
+    cy.get(".movie-card")
+      .first().click()
+    cy.url().should('eq', 'http://localhost:3000/694919')
+
+    cy.get(".nav").click()
+    cy.url().should('eq', 'http://localhost:3000/')
+
+    cy.get(".movie-card")
+      .eq(4).click()
+    cy.url().should('eq', 'http://localhost:3000/581392')
+  })
+
   it("Should have a home button that takes user home when clicked", () => {
     cy.get(".movie-card")
       .first().click()
 
       cy.get(".movie-card")
       .should("have.length", 1)
-      cy.wait(1000)
       cy.get(".nav").click()
     
       cy.get(".movie-card")
@@ -40,7 +52,6 @@ describe("Single movie spec testing", () => {
     cy.get(".movie-card")
       .eq(4).click()
 
-      cy.wait(1000)
 
     cy.get(".movie-card")
         .contains("72%")
@@ -56,6 +67,28 @@ describe("Single movie spec testing", () => {
       
     cy.get(".movie-card .backdrop-image")
         .should("have.attr", "src").should("include", "https://image.tmdb.org/t/p/original//gEjNlhZhyHeto6Fy5wWy5Uk3A9D.jpg")
+      
+  })
+
+  it("Money Plane should have a movie card without a poster image", () => {
+
+    cy.get(".movie-card")
+      .first().click()
+
+    cy.get(".movie-card")
+        .contains("67%")
+
+    cy.get(".movie-card")
+        .contains("2020")
+
+    cy.get(".movie-card")
+        .contains("Money Plane")
+
+    cy.get(".movie-card .poster-image")
+        .should("not.exist")
+      
+    cy.get(".movie-card .backdrop-image")
+        .should("have.attr", "src").should("include", "https://image.tmdb.org/t/p/original//pq0JSpwyT2URytdFG0euztQPAyR.jpg")
       
   })
 
@@ -82,54 +115,44 @@ describe("Single movie spec testing", () => {
     .contains("Revenue: $35,878,266")
     .get(".movie-detail-container")
     .contains("Runtime: 114 minutes")
-    .get(".movie-detail-container")
+    .get(".tagline")
     .contains("Escape The Apocalypse")
   })
 
-  it("Money Plane should have a movie card without a poster image", () => {
+  it("Money Plane should have less movie details", () => {
 
     cy.get(".movie-card")
       .first().click()
 
-    cy.get(".movie-card")
-        .contains("67%")
-
-    cy.get(".movie-card")
-        .contains("2020")
-
-    cy.get(".movie-card")
-        .contains("Money Plane")
-
-    cy.get(".movie-card .poster-image")
-        .should("not.exist")
-      
-    cy.get(".movie-card .backdrop-image")
-        .should("have.attr", "src").should("include", "https://image.tmdb.org/t/p/original//pq0JSpwyT2URytdFG0euztQPAyR.jpg")
-      
-  })
-
-  it("Money Plane should have less movie details", () => {
-    cy.get(".movie-card")
-    .first().click()
-
-    /*
-    "title": "Money Plane",
-    "backdrop_path": "https://image.tmdb.org/t/p/original//pq0JSpwyT2URytdFG0euztQPAyR.jpg",
-    "overview": "A professional thief with $40 million in debt and his family's life on the line must commit one final heist - rob a futuristic airborne casino filled with the world's most dangerous criminals.",
-    "genres": [
-      "Action"
-    ],
-    "budget": 0,
-    "revenue": 0,
-    "runtime": 82,
-    "tagline": "",
-    "average_rating": 6.7
-    */
+    cy.get(".movie-detail-container")
+    .contains("Money Plane")
+    .get(".movie-detail-container")
+    .contains("A professional thief with $40 million in debt and his family's life on the line must commit one final heist - rob a futuristic airborne casino filled with the world's most dangerous criminals.")
+    .get(".movie-detail-container")
+    .contains("Genres:")
+    .get(".movie-detail-container")
+    .contains("Action")
+    .get(".movie-detail-container")
+    .contains("Budget:").should("not.exist")
+    .get(".movie-detail-container")
+    .contains("Revenue:").should("not.exist")
+    .get(".movie-detail-container")
+    .contains("Runtime: 82 minutes")
+    .get(".tagline")
+    .should("not.exist")
   })
 
   it("Money Plane should not have a movie trailer", () => {
     cy.get(".movie-card")
       .first().click()
+      .get("iframe")
+        .should("not.exist")
   })
 
+  it("Peninsula should have a movie trailer", () => {
+    cy.get(".movie-card")
+      .eq(4).click()
+      .get("iframe")
+        .should("have.attr", "src").should("include", "https://www.youtube.com/embed/cRvHl1dThlg")
+  })
 })
