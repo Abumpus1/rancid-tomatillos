@@ -6,6 +6,9 @@ function MovieDetailContainer({movie}) {
 
   const genresToDisplay = genres.map((genre,index)=> <p className="detail" key={index}>{genre} </p>)
 
+  const convertNumber = (value) => {
+    return `$${value.toLocaleString("en-US")}`;
+  }
 
   return (
     <div className="movie-detail-container">
@@ -20,8 +23,8 @@ function MovieDetailContainer({movie}) {
         <h4 className="detail">Genres:</h4>
         {genresToDisplay}
       </div>
-        {budget !== 0 && <h4 className="detail">Budget: ${budget.toLocaleString("en-US")}</h4>}
-        {revenue !==0 && <h4 className="detail">Revenue: ${revenue.toLocaleString("en-US")}</h4>}
+        {budget !== 0 && <h4 className="detail">Budget: {convertNumber(budget)}</h4>}
+        {revenue !==0 && <h4 className="detail">Revenue: {convertNumber(revenue)}</h4>}
     </div>
   )
 }
