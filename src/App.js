@@ -22,11 +22,13 @@ class App extends Component {
       .catch(error => this.setState({error:error.message}))
   }
 
+
+
   searchMovies = (searchInput) => {
     const searchResults = this.state.movies.filter(movie => {
-          return (
-            movie.title.toLowerCase().includes(searchInput.toLowerCase()))
-      })
+          return (movie.title.toLowerCase().includes(searchInput.toLowerCase()))
+        })
+
       this.setState({searchResults:searchResults});
   }
 

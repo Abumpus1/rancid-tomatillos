@@ -1,5 +1,5 @@
 import React, { Component }from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Route } from "react-router-dom";
 import "./TopSection.css";
 import image from "./logo.svg"
 
@@ -13,8 +13,14 @@ class TopSection extends Component {
 
   handleChange = (event) => {
     this.setState({[event.target.name]:event.target.value})
-    this.props.searchMovies(event.target.value);
+    this.props.searchMovies(this.state.search);
   }
+
+  clearSearch() {
+    this.setState({search:""})
+    this.props.searchMovies("")
+  }
+
 
   render() {
     return (
@@ -24,17 +30,22 @@ class TopSection extends Component {
           <img className="rancid-logo" src={image} alt="Rancid Tomatillos"/>
         </header>
         <nav>
-          <form>
-            <input
-             className="search-bar"
-             type="text"
-             value={this.state.search}
-             placeholder="Search Movie Titles"
-             name="search"
-             onChange={event => this.handleChange(event)}
-             />
-          </form>
-          <NavLink exact to="/" className="nav">HOME</NavLink>
+        <Route exact path="/" render={()=> {
+            return (
+              <form>
+              <input
+              className="search-bar"
+              type="text"
+              value={this.state.search}
+              placeholder="Search Movie Titles"
+              name="search"
+              onChange={event => this.handleChange(event)}
+              />
+              </form>
+            )
+          }}
+        />
+          <NavLink exact to="/" onClick={() => this.clearSearch()}className="nav">HOME</NavLink>
         </nav>
       </div>
     )
