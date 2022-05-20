@@ -5,9 +5,6 @@ describe("Dashboard spec testing", () => {
     cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/", { fixture: "movieData.json" })
 
     cy.visit("http://localhost:3000/")
-
-    cy.wait(1000)
-
   });
 
   it("Should display 5 movies", () => {
@@ -45,8 +42,6 @@ describe("Dashboard spec testing", () => {
     })
 
     cy.visit("http://localhost:3000/")
-
-    cy.wait(1000)
 
     cy.get("h2").contains("An error has occured, please try your request again later.")
   });
