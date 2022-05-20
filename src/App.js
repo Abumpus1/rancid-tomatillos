@@ -11,24 +11,33 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
-      error:""
+      error:"",
+      searchResults: []
     };
   }
 
   componentDidMount() {
     apiCalls.getMovies()
-      .then(data => this.setState({movies: data.movies,error:""}))
+      .then(data => this.setState({movies: data.movies,error:"",searchResults: data.movies}))
       .catch(error => this.setState({error:error.message}))
+  }
+
+  searchMovies = (searchInput) => {
+    const searchResults = this.state.movies.filter(movie => {
+          return (
+            movie.title.toLowerCase().includes(searchInput.toLowerCase()))
+      })
+      this.setState({searchResults:searchResults});
   }
 
   render() {
     return (
       <main className="App">
-        <TopSection />
+        <TopSection searchMovies={this.searchMovies}/>
         {this.state.error && <h2>An error has occured, please try your request again later.</h2>}
 
         <Switch>
-          <Route exact path="/" render={() => <MovieCardContainer movies={this.state.movies}/>} />
+          <Route exact path="/" render={() => <MovieCardContainer movies={this.state.searchResults}/>} />
           <Route exact path="/:movie_id" render={ ({ match }) => {
             return (<SingleMovie movieId={parseInt(match.params.movie_id)}/>)
           }}

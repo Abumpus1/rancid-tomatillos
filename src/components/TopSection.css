@@ -23,6 +23,10 @@ nav {
   width: 50px;
 }
 
+.search-bar {
+  color:black;
+}
+
 .nav {
   background: red;
   border-radius: 5px;
