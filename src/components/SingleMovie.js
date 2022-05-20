@@ -10,13 +10,16 @@ class SingleMovie extends Component {
     this.state = {
       id: movieId,
       movie: {},
-      videos:[]
+      videos:[],
+      message:""
     }
   }
 
 componentDidMount() {
+  this.setState({message: "Loading..."})
   Promise.all([apiCalls.getMovies(this.state.id), apiCalls.getMovies(`${this.state.id}/videos`)])
   .then(data => this.setState({ movie: data[0].movie, videos: data[1].videos }))
+  .catch(error => this.setState({message:"Error 404 Not Found"}))
 }
 
   render() {
@@ -39,7 +42,7 @@ componentDidMount() {
           <MovieDetailContainer movie={this.state.movie}/>
         </div>
       </div>
-      : <h2>Loading...</h2>
+      : <h2>{this.state.message}</h2>
     )
   }
 }
