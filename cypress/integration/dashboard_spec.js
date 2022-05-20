@@ -60,6 +60,6 @@ describe("Dashboard spec testing", () => {
 
   it("Should not have a home button on dashboard", () => {
 
-    cy.get(".top-section button").should("not.exist")
+    cy.get(".nav").should("have.css", "visibility", "hidden")
   });
 });

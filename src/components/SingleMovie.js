@@ -15,7 +15,7 @@ class SingleMovie extends Component {
   }
 
 componentDidMount() {
-  Promise.all([apiCalls.getMovies(this.state.id),apiCalls.getMovies(`${this.state.id}/videos`)])
+  Promise.all([apiCalls.getMovies(this.state.id), apiCalls.getMovies(`${this.state.id}/videos`)])
   .then(data => this.setState({ movie: data[0].movie, videos: data[1].videos }))
 }
 

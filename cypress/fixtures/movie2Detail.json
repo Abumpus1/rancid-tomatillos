@@ -1,0 +1,20 @@
+{
+  "movie": {
+    "id": 581392,
+    "title": "Peninsula",
+    "poster_path": "https://image.tmdb.org/t/p/original//sy6DvAu72kjoseZEjocnm2ZZ09i.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/original//gEjNlhZhyHeto6Fy5wWy5Uk3A9D.jpg",
+    "release_date": "2020-07-15",
+    "overview": "A soldier and his team battle hordes of post-apocalyptic zombies in the wastelands of the Korean Peninsula.",
+    "genres": [
+    "Action",
+    "Horror",
+    "Thriller"
+    ],
+    "budget": 17000000,
+    "revenue": 35878266,
+    "runtime": 114,
+    "tagline": "Escape The Apocalypse",
+    "average_rating": 7.166666666666667
+  }
+}
