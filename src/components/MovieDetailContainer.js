@@ -1,8 +1,7 @@
 import React from "react";
 import "./MovieDetailContainer.css";
 
-function MovieDetailContainer({movie}) {
-  const {title,tagline,budget,revenue,overview,runtime,genres} = movie
+function MovieDetailContainer({title,tagline,budget,revenue,overview,runtime,genres}) {
 
   const genresToDisplay = genres.map((genre,index)=> <p className="detail" key={index}>{genre} </p>)
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MovieCard from "./MovieCard";
 import MovieDetailContainer from "./MovieDetailContainer";
 import apiCalls from "../apiCalls";
+import utilities from "../utilities"
 import "./SingleMovie.css";
 
 class SingleMovie extends Component {
@@ -9,7 +10,8 @@ class SingleMovie extends Component {
     super()
     this.state = {
       id: movieId,
-      movie: {},
+      movieCard: {},
+      movieDetail:{},
       videos:[],
       error: ""
     }
@@ -17,7 +19,10 @@ class SingleMovie extends Component {
 
 componentDidMount() {
   Promise.all([apiCalls.getMovies(this.state.id), apiCalls.getMovies(`${this.state.id}/videos`)])
-  .then(data => this.setState({ movie: data[0].movie, videos: data[1].videos}))
+  .then(data => {
+
+    this.setState({ movieCard: utilities.cleanMovieCard(data[0].movie), movieDetail:utilities.cleanMovieDetail(data[0].movie), videos: utilities.cleanVideos(data[1].videos)})
+  })
   .catch(error => this.setState({error:error.message}))
 }
 
@@ -25,21 +30,17 @@ componentDidMount() {
     const trailer = this.state.videos.find(video => video.type === "Trailer" && video.site === "YouTube")
     return (
       <>
-         {this.state.movie.id && <div className="single-movie">
+         {this.state.movieCard.id && <div className="single-movie">
          <div className="card-display">
           <MovieCard
-            key={this.state.movie.id}
-            id={this.state.movie.id}
-            backdrop={this.state.movie.backdrop_path}
-            title={this.state.movie.title}
-            rating={this.state.movie.average_rating}
-            date={this.state.movie.release_date}
+            key={this.state.movieCard.id}
+            {...this.state.movieCard}
           />
           </div>
           <div className="trailer-details">
             {trailer && <iframe width="560" height="315" src={`https://www.youtube.com/embed/${trailer.key}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> }
             <br/>
-            <MovieDetailContainer movie={this.state.movie}/>
+            <MovieDetailContainer {...this.state.movieDetail}/>
           </div>
         </div>}
          {this.state.error && <h2>Error: {this.state.error}, Please go back Home and try again.</h2>}
