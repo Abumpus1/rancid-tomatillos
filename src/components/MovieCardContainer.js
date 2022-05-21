@@ -8,12 +8,7 @@ function MovieCardContainer({ movies }) {
     return (
       <Link to={`/${movie.id}`} key={movie.id}>
         <MovieCard
-          id={movie.id}
-          poster={movie.poster_path}
-          backdrop={movie.backdrop_path}
-          title={movie.title}
-          rating={movie.average_rating}
-          date={movie.release_date}
+        {...movie}
         />
       </Link>
     )
