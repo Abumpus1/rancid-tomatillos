@@ -1,4 +1,4 @@
-.movie-card, .poster-image, .backdrop-image {
+.movie-card, .movie-card-link, .poster-image, .backdrop-image {
   height: 500px;
   width: 333px;
 }

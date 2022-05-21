@@ -6,7 +6,7 @@ import "./MovieCardContainer.css";
 function MovieCardContainer({ movies }) {
   const movieCards = movies.map(movie => {
     return (
-      <Link to={`/${movie.id}`} key={movie.id}>
+      <Link className="movie-card-link" to={`/${movie.id}`} key={movie.id}>
         <MovieCard
         {...movie}
         />
