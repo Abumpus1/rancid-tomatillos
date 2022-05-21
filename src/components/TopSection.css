@@ -1,7 +1,7 @@
 .top-section {
   display:flex;
   height:10vh;
-  background-color: black;
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(50,50,50,1) 45%, rgba(125,125,125,1) 100%);
   position:sticky;
   top:0;
   z-index:5;
@@ -16,6 +16,7 @@ header,nav {
 
 nav {
   justify-content:flex-end;
+
 }
 
 .rancid-logo {
@@ -25,6 +26,12 @@ nav {
 
 .search-bar {
   color:black;
+  border-color:red;
+  border-radius:50px;
+  text-indent: 10px;
+  background-color:white;
+  width: 170px;
+  height:25px;
 }
 
 .nav {
