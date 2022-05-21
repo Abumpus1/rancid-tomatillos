@@ -19,7 +19,7 @@ componentDidMount() {
   this.setState({message: "Loading..."})
   Promise.all([apiCalls.getMovies(this.state.id), apiCalls.getMovies(`${this.state.id}/videos`)])
   .then(data => this.setState({ movie: data[0].movie, videos: data[1].videos }))
-  .catch(error => this.setState({message:"Error 404 Not Found"}))
+  .catch(error => this.setState({message:error.message}))
 }
 
   render() {
@@ -42,7 +42,7 @@ componentDidMount() {
           <MovieDetailContainer movie={this.state.movie}/>
         </div>
       </div>
-      : <h2>{this.state.message}</h2>
+      : <h2>Error: {this.state.message}, Please go back Home and try again.</h2>
     )
   }
 }

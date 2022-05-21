@@ -12,14 +12,15 @@ class App extends Component {
     this.state = {
       movies: [],
       error:"",
-      searchResults: []
+      searchResults: [],
+      loading:true
     };
   }
 
   componentDidMount() {
     apiCalls.getMovies()
-      .then(data => this.setState({movies: data.movies,error:"",searchResults: data.movies}))
-      .catch(error => this.setState({error:error.message}))
+      .then(data => this.setState({movies: data.movies,error:"",searchResults: data.movies,loading:false}))
+      .catch(error => this.setState({error:error.message,loading:false}))
   }
 
 
@@ -36,8 +37,9 @@ class App extends Component {
     return (
       <main className="App">
         <TopSection searchMovies={this.searchMovies}/>
-        {this.state.error && <h2>An error has occured, please try your request again later.</h2>}
-
+        {this.state.error && <h2>Error: {this.state.error}, Please try your request again later.</h2>}
+        {this.state.loading && <h2>Loading...</h2>}
+        {!this.state.searchResults.length && this.state.movies.length > 0 && <h2>No search results found! Please alter your search and try again.</h2>}
         <Switch>
           <Route exact path="/" render={() => <MovieCardContainer movies={this.state.searchResults}/>} />
           <Route exact path="/:movie_id" render={ ({ match }) => {

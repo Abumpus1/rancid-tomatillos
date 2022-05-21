@@ -1,5 +1,5 @@
 describe("Single movie spec testing", () => {
-  
+
   beforeEach(() => {
     cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/", { fixture: "movieData.json" })
 
@@ -8,7 +8,7 @@ describe("Single movie spec testing", () => {
 
     cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/581392", { fixture: "movie2Detail.json" })
     cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/581392/videos", { fixture: "videos2.json" })
-    
+
     cy.visit("http://localhost:3000")
 
   })
@@ -35,6 +35,21 @@ describe("Single movie spec testing", () => {
     cy.url().should('eq', 'http://localhost:3000/581392')
   })
 
+  it("Should provide error message on invalid URL", () => {
+    // cy.url().should('eq', 'http://localhost:3000/')
+    //
+    // cy.get(".movie-card")
+    //   .first().click()
+    // cy.url().should('eq', 'http://localhost:3000/694919')
+    //
+    // cy.get(".nav").click()
+    // cy.url().should('eq', 'http://localhost:3000/')
+    //
+    // cy.get(".movie-card")
+    //   .eq(4).click()
+    // cy.url().should('eq', 'http://localhost:3000/581392')
+  })
+
   it("Should have a home button that takes user home when clicked", () => {
     cy.get(".movie-card")
       .first().click()
@@ -42,7 +57,7 @@ describe("Single movie spec testing", () => {
       cy.get(".movie-card")
       .should("have.length", 1)
       cy.get(".nav").click()
-    
+
       cy.get(".movie-card")
       .should("have.length", 5)
   })
@@ -64,10 +79,10 @@ describe("Single movie spec testing", () => {
 
     cy.get(".movie-card .poster-image")
         .should("not.exist")
-      
+
     cy.get(".movie-card .backdrop-image")
         .should("have.attr", "src").should("include", "https://image.tmdb.org/t/p/original//gEjNlhZhyHeto6Fy5wWy5Uk3A9D.jpg")
-      
+
   })
 
   it("Money Plane should have a movie card without a poster image", () => {
@@ -86,10 +101,10 @@ describe("Single movie spec testing", () => {
 
     cy.get(".movie-card .poster-image")
         .should("not.exist")
-      
+
     cy.get(".movie-card .backdrop-image")
         .should("have.attr", "src").should("include", "https://image.tmdb.org/t/p/original//pq0JSpwyT2URytdFG0euztQPAyR.jpg")
-      
+
   })
 
   it("Peninsula should have movie details", () => {
@@ -155,4 +170,8 @@ describe("Single movie spec testing", () => {
       .get("iframe")
         .should("have.attr", "src").should("include", "https://www.youtube.com/embed/cRvHl1dThlg")
   })
+
+  // it("Should not have a search bar on the movie details page",()=>{
+  //
+  // });
 })
