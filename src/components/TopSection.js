@@ -12,8 +12,9 @@ class TopSection extends Component {
   }
 
   handleChange = (event) => {
+    event.preventDefault();
     this.setState({[event.target.name]:event.target.value})
-    this.props.searchMovies(this.state.search);
+    this.props.searchMovies(event.target.value);
   }
 
   clearSearch() {
@@ -32,15 +33,15 @@ class TopSection extends Component {
         <nav>
         <Route exact path="/" render={()=> {
             return (
-              <form>
-              <input
-              className="search-bar"
-              type="text"
-              value={this.state.search}
-              placeholder="Search Movie Titles"
-              name="search"
-              onChange={event => this.handleChange(event)}
-              />
+              <form onSubmit={event =>this.handleChange(event)}>
+                <input
+                className="search-bar"
+                type="search"
+                value={this.state.search}
+                placeholder="Search Movie Titles"
+                name="search"
+                onChange={event => this.handleChange(event)}
+                />
               </form>
             )
           }}
