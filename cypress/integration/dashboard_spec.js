@@ -36,14 +36,14 @@ describe("Dashboard spec testing", () => {
 
   });
 
-  it.only("Should display an error message on a 500 server error", () => {
+  it("Should display an error message on a 500 server error", () => {
     cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/", {
       statusCode: 500
     })
 
     cy.visit("http://localhost:3000/")
 
-    cy.get("main").contains("An error has occured, please try your request again later.")
+    cy.get("main").contains("Error: 500, Please try your request again later.")
   });
 
   it("Should have a title and logo", () => {
@@ -114,6 +114,10 @@ describe("Dashboard spec testing", () => {
     cy.visit("http://localhost:3000/invalid/invalid")
 
     cy.get("h2").contains("Looks like you took a wrong turn, click Home to go back!")
+  });
+
+  it("Should say loading... on page load.", () => {
+    cy.get("h2").contains("Loading...")
   });
 
 });
