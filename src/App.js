@@ -4,6 +4,7 @@ import MovieCardContainer from "./components/MovieCardContainer";
 import SingleMovie from "./components/SingleMovie";
 import { Route, Switch } from "react-router-dom";
 import apiCalls from "./apiCalls";
+import utilities from "./utilities"
 import "./App.css";
 
 class App extends Component {
@@ -19,7 +20,7 @@ class App extends Component {
 
   componentDidMount() {
     apiCalls.getMovies()
-      .then(data => this.setState({movies: data.movies,error:"",searchResults: data.movies,loading:false}))
+      .then(data => this.setState({movies: utilities.cleanAllMovies(data.movies),error:"",searchResults: utilities.cleanAllMovies(data.movies),loading:false}))
       .catch(error => this.setState({error:error.message,loading:false}))
   }
 

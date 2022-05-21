@@ -20,7 +20,6 @@ class SingleMovie extends Component {
 componentDidMount() {
   Promise.all([apiCalls.getMovies(this.state.id), apiCalls.getMovies(`${this.state.id}/videos`)])
   .then(data => {
-
     this.setState({ movieCard: utilities.cleanMovieCard(data[0].movie), movieDetail:utilities.cleanMovieDetail(data[0].movie), videos: utilities.cleanVideos(data[1].videos)})
   })
   .catch(error => this.setState({error:error.message}))
