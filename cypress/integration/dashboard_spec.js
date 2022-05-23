@@ -3,7 +3,7 @@ describe("Dashboard spec testing", () => {
   beforeEach(() => {
     cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/", { fixture: "movieData.json" })
 
-    cy.visit("http://localhost:3000/")
+    cy.visit("http://localhost:3000/rancid-tomatillos")
   });
 
   it("Should display 5 movies", () => {
@@ -105,7 +105,7 @@ describe("Dashboard spec testing", () => {
   });
 
   it("Should display an error message with an invalid url", () => {
-    cy.visit("http://localhost:3000/invalid/invalid")
+    cy.visit("http://localhost:3000/rancid-tomatillos/invalid/invalid")
 
     cy.get("h2").contains("Looks like you took a wrong turn, click Home to go back!")
   });

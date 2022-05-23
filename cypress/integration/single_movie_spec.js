@@ -9,7 +9,7 @@ describe("Single movie spec testing", () => {
     cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/581392", { fixture: "movie2Detail.json" })
     cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/581392/videos", { fixture: "videos2.json" })
 
-    cy.visit("http://localhost:3000")
+    cy.visit("http://localhost:3000/rancid-tomatillos")
   })
 
   it("Should take user to Single Movie page", () => {
@@ -20,18 +20,18 @@ describe("Single movie spec testing", () => {
   })
 
   it("Should update url based on page", () => {
-    cy.url().should('eq', 'http://localhost:3000/')
+    cy.url().should('eq', 'http://localhost:3000/rancid-tomatillos')
 
     cy.get(".movie-card")
       .first().click()
-    cy.url().should('eq', 'http://localhost:3000/694919')
+    cy.url().should('eq', 'http://localhost:3000/rancid-tomatillos/694919')
 
     cy.get(".nav").click()
-    cy.url().should('eq', 'http://localhost:3000/')
+    cy.url().should('eq', 'http://localhost:3000/rancid-tomatillos/')
 
     cy.get(".movie-card")
       .eq(4).click()
-    cy.url().should('eq', 'http://localhost:3000/581392')
+    cy.url().should('eq', 'http://localhost:3000/rancid-tomatillos/581392')
   })
 
   it("Should display an error message on a 404 error", () => {
@@ -39,7 +39,7 @@ describe("Single movie spec testing", () => {
       statusCode: 404
     })
 
-    cy.visit("http://localhost:3000/123456")
+    cy.visit("http://localhost:3000/rancid-tomatillos/123456")
 
     cy.get("main").contains("Error: 404, Please go back Home and try again.")
   });
