@@ -1,7 +1,7 @@
 import React, { Component }from "react";
 import { NavLink, Route } from "react-router-dom";
 import "./TopSection.css";
-import image from "./logo.svg"
+import image from "./popcorn.png"
 
 class TopSection extends Component {
   constructor() {
@@ -26,6 +26,7 @@ class TopSection extends Component {
     return (
       <div className="top-section">
         <header>
+          <img className="rancid-logo" src={image} alt="Rancid Tomatillos"/>
           <h1>Rancid Tomatillos</h1>
           <img className="rancid-logo" src={image} alt="Rancid Tomatillos"/>
         </header>
