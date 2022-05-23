@@ -10,11 +10,11 @@ function MovieCard({id, poster, backdrop, title, rating, date }) {
       <div className="rating-box">
         <p>{fixedRating}</p>
       </div>
-      {poster && <img className="poster-image" src={poster}/>}
+      {poster && <img className="poster-image" src={poster} alt={title}/>}
       <div className="movie-card-hover">
         <div className="hover-shadow"></div>
         <div className="backdrop-box">
-          <img className="backdrop-image" src={backdrop} />
+          <img className="backdrop-image" src={backdrop} alt={`${title} backdrop`} />
         </div>
         <p className="card-date">{year}</p>
         <p className="card-title">{title}</p>
