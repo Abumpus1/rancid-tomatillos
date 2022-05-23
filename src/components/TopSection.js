@@ -26,6 +26,7 @@ class TopSection extends Component {
     return (
       <div className="top-section">
         <header>
+          <img className="rancid-logo" src={image} alt="Rancid Tomatillos"/>
           <h1>Rancid Tomatillos</h1>
           <img className="rancid-logo" src={image} alt="Rancid Tomatillos"/>
         </header>

@@ -19,9 +19,25 @@ nav {
 
 }
 
+h1 {
+  margin: 0px 15px;
+}
+
 .rancid-logo {
   height: 50px;
   width: 50px;
+}
+
+.rancid-logo:hover {
+   animation: shakeImg 0.5s;
+   animation-iteration-count: 1;
+}
+
+@keyframes shakeImg {
+   0% { transform: translate(0px, 0px) rotate(5deg); }
+   33% { transform: translate(6px, 0px) rotate(10deg); }
+   66% { transform: translate(-6px, 0px) rotate(-10deg); }
+   100% { transform: translate(0px, 0px) rotate(-5deg); }
 }
 
 .search-bar {
