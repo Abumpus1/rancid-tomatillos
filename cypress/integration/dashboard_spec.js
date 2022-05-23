@@ -46,7 +46,7 @@ describe("Dashboard spec testing", () => {
   it("Should have a title and logo", () => {
     cy.get("h1").should("have.text", "Rancid Tomatillos")
 
-    cy.get(".top-section img").should("have.attr", "src").should("include", "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg")
+    cy.get(".top-section img").should("have.attr", "alt").should("include", "Rancid Tomatillos")
   });
 
   it("Should not have a home button on dashboard", () => {
