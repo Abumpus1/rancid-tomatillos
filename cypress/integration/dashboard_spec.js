@@ -53,11 +53,11 @@ describe("Dashboard spec testing", () => {
     cy.get(".nav").should("have.css", "visibility", "hidden")
   });
 
-  it("Should have a search bar on the home page",()=>{
+  it("Should have a search bar on the home page",() => {
     cy.get(".search-bar").should("exist")
   });
 
-  it("Should be able to search in the search Bar",()=>{
+  it("Should be able to search in the search Bar",() => {
     cy.get(".search-bar")
       .type("la")
 
@@ -77,21 +77,21 @@ describe("Dashboard spec testing", () => {
       .contains("Peninsula")
   });
 
-  it("Pressing enter while in the search bar should do nothing",()=>{
+  it("Pressing enter while in the search bar should do nothing",() => {
     cy.get(".search-bar")
       .type("la")
       .type("{enter}")
       .should("have.value","la")
   });
 
-  it("Should display an error if no search results",() =>{
+  it("Should display an error if no search results",() => {
     cy.get(".search-bar")
       .type("lalsls")
 
     cy.get("h2").contains("No search results found! Please alter your search and try again.")
   });
 
-  it("Should be able to clear the search bar",() =>{
+  it("Should be able to clear the search bar",() => {
     cy.get('.search-bar').type('Mul')
 
     cy.get(".movie-card")
@@ -113,5 +113,4 @@ describe("Dashboard spec testing", () => {
   it("Should say loading... on page load.", () => {
     cy.get("h2").contains("Loading...")
   });
-
 });
